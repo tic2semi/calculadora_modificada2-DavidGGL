@@ -26,14 +26,19 @@ float calcula_rebaja_estudiante (float precio_original, float porcentaje_rebaja_
 	nuevo_precio_estudiante = round( nuevo_precio_estudiante*100) /100; //Redondea el precio
 	return nuevo_precio_estudiante; //Devuelve el valor del precio
 }
-
+//Función de tipo float que calcula el precio en dolares, por lo que se multiplica el precio por 1.12
+float euro_dolar (float precio_original, float cotizacion)
+{
+	float nuevo_precio_dolar;
+	nuevo_precio_dolar = precio_original*cotizacion;
+	nuevo_precio_dolar = round(nuevo_precio_dolar*100) /100; //redondea el precio en dolares
+	return nuevo_precio_dolar; //Devuelve el valor del precio en dolar
+	
+}
 
 /*Funcion principal*/ 
 int main(int argc, char *argv[]) {
-	float precio;
-	float precio_rebajado;
-	float precio_rebajado_vip;
-	float precio_rebajado_estudiante;
+	float precio, precio_rebajado, precio_rebajado_vip, precio_rebajado_estudiante, precio_dolar;
 	string producto;
 	
 	//Le pide al usuario el nombre del producto
@@ -59,6 +64,9 @@ int main(int argc, char *argv[]) {
 	//Muestra por pantalla el precio del producto para estudiantes
 	cout << "El precio para estudiantes del producto " << producto << " es de "
 		<< precio_rebajado_estudiante << " euros\n";
+	/*A la variable precio_dolar le da el valor que se devuelve en la función euro_dolar*/
+	precio_dolar = euro_dolar(precio, 1.12);
+	cout << "El precio en dolares del producto " << producto << " es de " << precio_dolar << "$\n";
 	return 0;
 }
 
